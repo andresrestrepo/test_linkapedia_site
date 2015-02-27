@@ -1,4 +1,5 @@
 *.idea
 
 linkapedia_site/node_modules
+linkapedia_site/public/javascripts/bower_components
 
