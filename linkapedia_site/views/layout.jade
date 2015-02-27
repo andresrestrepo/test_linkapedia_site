@@ -7,8 +7,9 @@ html
             title Linkapedia
         block page_css
             link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
-            link(rel='stylesheet', href='/stylesheets/style.css')
-            link(rel='stylesheet', href='/stylesheets/left_side.css')
+            link(rel='stylesheet', href='/stylesheets/general-page.css')
+            link(rel='stylesheet', href='/stylesheets/bar-left-side.css')
+            link(rel='stylesheet', href='/stylesheets/slide-panel.css')
         block page_js
             script(src='/javascripts/bower_components/jquery/dist/jquery.min.js')
             script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
@@ -18,8 +19,7 @@ html
 
     body
         include bar_left_side
-        div.linkapedia-tools-panel
-            include linkapedia-tools-panel
-
+        div.slide-panel
+            include slide-panel
 
         block content

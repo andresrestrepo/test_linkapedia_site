@@ -1,38 +1,39 @@
 $(document).ready(function(){
     $('input, textarea').placeholder();
-    $(".linkapedia-tools-open-close").click(function(event){
+    $(".menu-icon").click(function(event){
         event.preventDefault();
-        $('.linkapedia-navigation').show();
-        $('.linkapedia-search').hide();
-        if (!$('.linkapedia-tools-panel').is(":visible")){
+        $('.general-menu').show();
+        $('.general-search').hide();
+        if (!$('.slide-panel').is(":visible")){
             openclosetab();
         }
     });
 
-    $(".search").click(function(event){
+    $(".search-icon").click(function(event){
         event.preventDefault();
-        $('.linkapedia-navigation').hide();
-        $('.linkapedia-search').show();
-        if (!$('.linkapedia-tools-panel').is(":visible")) {
+        $('.general-menu').hide();
+        $('.general-search').show();
+        if (!$('.slide-panel').is(":visible")) {
             openclosetab()
         }
     });
 
-    $(".linkapedia-tools-close").click(function(event){
+    $(".close-slide-panel-icon").click(function(event){
         event.preventDefault();
         openclosetab();
     });
 
     function openclosetab(){
-        $(".linkapedia-tools-panel").animate({width:'toggle'},350, function(){
-            $('.linkapedia-tools-panel-right').css("position", "fixed");
-            $('.linkapedia-tools-panel-right').css("left", "calc(100% - 100px)");
-            if (!$('.linkapedia-tools-panel').is(":visible")){
-                $('.linkapedia-tools-panel-right').removeAttr("style");
+        var barRightSide = $('.bar-right-side');
+        $(".slide-panel").animate({width:'toggle'},350, function(){
+            barRightSide.css("position", "fixed");
+            barRightSide.css("left", "calc(100% - 100px)");
+            if (!$('.slide-panel').is(":visible")){
+                $('.bar-right-side').removeAttr("style");
             }
             $('body').toggleClass('b_overflow');
         });
-        $('.linkapedia-tools-panel-right').toggle();
+        barRightSide.toggle();
     }
 });
 
