@@ -1,0 +1,19 @@
+extends layout
+
+block title
+    title Linkapedia Topic Page
+
+block append page_css
+    link(rel='stylesheet', href='/stylesheets/topics.css')
+
+
+block content
+    div.topics-porlet
+        div.container-fluid
+            div.row
+                each val in topics.items
+                    div.col-md-1
+                        div.topic_image
+                            img(src='#{val.image}')
+                        div.topic_title
+                            p= val.name.toUpperCase()
