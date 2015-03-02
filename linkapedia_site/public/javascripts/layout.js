@@ -25,15 +25,16 @@ $(document).ready(function(){
 
     function openclosetab(){
         var barRightSide = $('.bar-right-side');
-        $(".slide-panel").animate({width:'toggle'},350, function(){
-            barRightSide.css("position", "fixed");
+        $('body').toggleClass('b_overflow');
+        $(".slide-panel").animate({width:"toggle"},350, function(){
+           /* barRightSide.css("position", "fixed");
             barRightSide.css("left", "calc(100% - 100px)");
             if (!$('.slide-panel').is(":visible")){
                 $('.bar-right-side').removeAttr("style");
             }
-            $('body').toggleClass('b_overflow');
+
+            barRightSide.toggle();*/
         });
-        barRightSide.toggle();
     }
 });
 
