@@ -3,7 +3,7 @@
 linkapedia_site/node_modules
 linkapedia_site/public/javascripts/bower_components
 
-.elasticbeanstalk/
+npm-debug.log
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
