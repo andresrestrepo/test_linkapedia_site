@@ -1,7 +1,7 @@
 *.idea
 
-linkapedia_site/node_modules
-linkapedia_site/public/javascripts/bower_components
+node_modules
+public/javascripts/bower_components
 
 npm-debug.log
 
