@@ -14,7 +14,7 @@ $(document).ready(function(){
         $('.general-menu').hide();
         $('.general-search').show();
         if (!$('.slide-panel').is(":visible")) {
-            openclosetab()
+            openclosetab();
         }
     });
 
@@ -24,16 +24,9 @@ $(document).ready(function(){
     });
 
     function openclosetab(){
-        var barRightSide = $('.bar-right-side');
         $('body').toggleClass('b_overflow');
+        $('.bar-right-side').toggle();
         $(".slide-panel").animate({width:"toggle"},350, function(){
-           /* barRightSide.css("position", "fixed");
-            barRightSide.css("left", "calc(100% - 100px)");
-            if (!$('.slide-panel').is(":visible")){
-                $('.bar-right-side').removeAttr("style");
-            }
-
-            barRightSide.toggle();*/
         });
     }
 });
