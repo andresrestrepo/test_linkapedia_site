@@ -8,12 +8,10 @@ module.exports = {
             function(callback) {
                 topicsRepository.getSons(topicId, function(err, data){
                     if (err) return callback(err);
-                    //to testing
                     var topics = JSON.parse(data);
-                    for (index in topics.items){
-                        var topic_id = topics.items[index].id;
-                        var image_url = "https://s3.amazonaws.com/testnodeimages/"+topic_id;
-                        topics.items[index].image =image_url
+                    for (var currentTopic in topics.items){
+                        var topic_id = topics.items[currentTopic].id;
+                        topics.items[currentTopic].image = "https://s3.amazonaws.com/testnodeimages/"+topic_id;
                     }
                     topicPageInfo.topicChildren = topics;
                     callback();
