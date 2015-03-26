@@ -3,3 +3,9 @@
 linkapedia_site/node_modules
 linkapedia_site/public/javascripts/bower_components
 
+.elasticbeanstalk/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
