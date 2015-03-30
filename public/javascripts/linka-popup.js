@@ -5,7 +5,7 @@ function popup(popupId){
     div.show();
 
     $("#"+popupId).fadeIn(500);
-    $('body').css("overflow", "hidden");
+    $('body').toggleClass('b_overflow');
 
     var a = $("<a>").text("Ok").attr("href", "#").attr("id", "close-popup");
     a.click(function(evt){
@@ -22,7 +22,7 @@ function popupClose(popupId){
     $("#"+popupId).fadeOut(500, function(){
         $("#linka-popup-background").remove();
         $("#"+popupId).children($("<a>")).remove();
-        $('body').css("overflow", "auto");
+        $('body').toggleClass('b_overflow');
     });
 
 
