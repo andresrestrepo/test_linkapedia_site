@@ -1,8 +1,8 @@
 var request = require('request');
 var util = require('util');
 
-const RETRIEVE_CHILDREN_URL = "http://api.linkapedia.com/topics/%d/children?limit=10";
-const RETRIEVE_TOPIC_URL = "http://api.linkapedia.com/topics/%d";
+const RETRIEVE_CHILDREN_URL = "http://api.linkapedia.com/topics/%s/children?limit=10";
+const RETRIEVE_TOPIC_URL = "http://api.linkapedia.com/topics/%s";
 
 module.exports = {
     getSons: function(topicId, callback){

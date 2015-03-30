@@ -18,6 +18,7 @@ $(document).ready(function () {
         topicsService.getNextTopics(nextUrl, function (data) {
             for (var index in data.items) {
                 var divCol = $("<div>").addClass("col-md-1");
+                divCol.attr("onclick", "window.location.href='/topics/" + data.items[index].id +"'");
                 var divContainerTopicImage = $("<div>").addClass("container-topic-image");
                 var divImageCropped = $("<div>").addClass("topic_image image-cropper");
                 var img = $("<img>").attr("url-data", "https://s3.amazonaws.com/testnodeimages/" + data.items[index].id);
