@@ -6,22 +6,30 @@ module.exports = {
         var topicPageInfo = {};
         async.parallel([
             function(callback) {
-                topicsRepository.getSons(topicId, function(err, data){
-                    if (err) return callback(err);
-                    var topics = JSON.parse(data);
-                    for (var currentTopic in topics.items){
-                        var topic_id = topics.items[currentTopic].id;
-                        topics.items[currentTopic].image = "https://s3.amazonaws.com/testnodeimages/"+topic_id;
+                topicsRepository.getSons(topicId, function(error, response, data){
+                    if (!error && response.statusCode == 200) {
+                        var topics = JSON.parse(data);
+                        for (var currentTopic in topics.items){
+                            var topic_id = topics.items[currentTopic].id;
+                            topics.items[currentTopic].image = "https://s3.amazonaws.com/testnodeimages/"+topic_id;
+                        }
+                        topicPageInfo.topicChildren = topics;
+                        return callback();
                     }
-                    topicPageInfo.topicChildren = topics;
-                    callback();
+                    var err = new Error('Exception getting children');
+                    err.status = response.statusCode;
+                    callback(err);
                 });
             },
             function(callback) {
-                topicsRepository.getTopic(topicId, function(err, data){
-                    if (err) return callback(err);
-                    topicPageInfo.topicInfo =  JSON.parse(data);
-                    callback();
+                topicsRepository.getTopic(topicId, function(error, response, data){
+                    if (!error && response.statusCode == 200) {
+                        topicPageInfo.topicInfo = JSON.parse(data);
+                        return callback();
+                    }
+                    var err = new Error('Exception getting topic');
+                    err.status = response.statusCode;
+                    callback(err);
                 });
             }
         ], function(err) {
