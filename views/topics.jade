@@ -5,10 +5,12 @@ block title
 
 block append page_css
     link(rel='stylesheet', href='/stylesheets/topics.css')
+    link(rel='stylesheet', href='/stylesheets/popup.css')
 
 block append page_js
     script(src='/javascripts/topics.js')
     script(src='/javascripts/topicsService.js')
+    script(src='/javascripts/linka-popup.js')
 
 
 block content
@@ -29,3 +31,4 @@ block content
         img(id="next-topics-button" src="/images/down-arrow-circle-hi.png")
         p More Topics?
         div(id="next-topics" style="display: none") #{topic.topicChildren.next}
+    div.linka-popup(id="popup-not-more-topics") Not more topics to get :(

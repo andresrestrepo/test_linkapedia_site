@@ -12,7 +12,7 @@ $(document).ready(function () {
         evt.preventDefault();
         var nextUrl = $("#next-topics").text();
         if (nextUrl == "") {
-            alert("end");
+            popup("popup-not-more-topics");
             return;
         }
         topicsService.getNextTopics(nextUrl, function (data) {
