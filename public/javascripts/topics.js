@@ -1,87 +1,71 @@
-$(document).ready(function(){
-    $(".topics-porlet [class=col-md-1]").mouseenter(function() {
-        $(this).animate({top:"-=10px"}, 200);
-    }).mouseleave(function() {
-        $(this).finish().animate({top:"+=10px"}, 200);
-    });
+$(document).ready(function () {
+    registerEventPorletAnimation( $(".topics-porlet [class=col-md-1]"));
+    function registerEventPorletAnimation(selector){
+        selector.mouseenter(function () {
+            $(this).animate({top: "-=10px"}, 200);
+        }).mouseleave(function () {
+            $(this).finish().animate({top: "+=10px"}, 200);
+        });
+    }
 
-    $("#next-topics-button").click(function(evt){
+    $("#next-topics-button").click(function (evt) {
+        evt.preventDefault();
         var nextUrl = $("#next-topics").text();
-        if (nextUrl == ""){
+        if (nextUrl == "") {
             alert("end");
             return;
         }
-        topicsService.getNextTopics(nextUrl, function(data){
-            for (var index in data.items){
+        topicsService.getNextTopics(nextUrl, function (data) {
+            for (var index in data.items) {
                 var divCol = $("<div>").addClass("col-md-1");
                 var divContainerTopicImage = $("<div>").addClass("container-topic-image");
                 var divImageCropped = $("<div>").addClass("topic_image image-cropper");
-                var img = $("<img>").attr("src", "https://s3.amazonaws.com/testnodeimages/"+data.items[index].id);
-                img.css("max-height", "200px");
-                img.css("max-width", "300px");
+                var img = $("<img>").attr("url-data", "https://s3.amazonaws.com/testnodeimages/" + data.items[index].id);
+                img.css("display", "none");
                 var divTopicTitle = $("<div>").addClass("porlet-topic-title").append($("<p>").text(data.items[index].name.toUpperCase()));
                 divImageCropped.append(img);
                 divContainerTopicImage.append(divImageCropped);
                 divContainerTopicImage.append(divTopicTitle);
                 divCol.append(divContainerTopicImage);
                 $(".topics-porlet").find(".row").append(divCol);
+                convertToLinkapediaImage(img);
+                registerEventPorletAnimation(divCol);
             }
-            if (data.next){
+            if (data.next) {
                 $("#next-topics").text(data.next);
-            }else{
+            } else {
                 $("#next-topics").text("");
             }
-        }, function(err){
+        }, function (err) {
 
         });
     });
 
-    $( ".topic_image").children($("<img>")).each(function( index ) {
-        $(this).attr("src", $(this).attr("url-data")).load(function() {
-            if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-
-            } else {
-                if (this.naturalWidth >300 || this.naturalHeight>200){
-                    var percentScale = getPercentScale(this.naturalWidth, this.naturalHeight, 300, 200);
-                    var widthScale = this.naturalWidth * percentScale;
-                    var heightScale = this.naturalHeight * percentScale;
-                    if (isAllowCropImage(widthScale, heightScale, 300, 200)){
-                        var width = (widthScale - 300) / 2;
-                        var height = (heightScale - 200) / 2;
-                        $(this).css("position", "absolute");
-                        $(this).css("left", width * (-1));
-                        $(this).css("top", height * (-1));
-                    }
-                    $(this).css("width", widthScale+"px");
-                    $(this).css("height", heightScale+"px");
-                }
-                $(this).show();
-            }
-        });
+    $(".topic_image").children($("<img>")).each(function (index) {
+        convertToLinkapediaImage($(this));
     });
 
-
-    function convertToLinkapediaImage(){
-        $(this).attr("src", $(this).attr("url-data")).load(function() {
-            if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
-
-            } else {
-                if (this.naturalWidth >300 || this.naturalHeight>200){
-                    var percentScale = getPercentScale(this.naturalWidth, this.naturalHeight, 300, 200);
-                    var widthScale = this.naturalWidth * percentScale;
-                    var heightScale = this.naturalHeight * percentScale;
-                    if (isAllowCropImage(widthScale, heightScale, 300, 200)){
-                        var width = (widthScale - 300) / 2;
-                        var height = (heightScale - 200) / 2;
-                        $(this).css("position", "absolute");
-                        $(this).css("left", width * (-1));
-                        $(this).css("top", height * (-1));
-                    }
-                    $(this).css("width", widthScale+"px");
-                    $(this).css("height", heightScale+"px");
+    function convertToLinkapediaImage(tagImg) {
+        tagImg.attr("src", tagImg.attr("url-data")).load(function () {
+            var naturalWidth = tagImg.get(0).naturalWidth;
+            var naturalHeight = tagImg.get(0).naturalHeight;
+            if (naturalWidth > 300 || naturalHeight > 200) {
+                var percentScale = getPercentScale(naturalWidth, naturalHeight, 300, 200);
+                var widthScale = naturalWidth * percentScale;
+                var heightScale = naturalHeight * percentScale;
+                if (isAllowCropImage(widthScale, heightScale, 300, 200)) {
+                    var width = (widthScale - 300) / 2;
+                    var height = (heightScale - 200) / 2;
+                    tagImg.css("position", "absolute");
+                    tagImg.css("left", width * (-1));
+                    tagImg.css("top", height * (-1));
                 }
-                $(this).show();
+                tagImg.css("width", widthScale + "px");
+                tagImg.css("height", heightScale + "px");
             }
+            tagImg.show("fast");
+        }).error(function () {
+            alert("error loading image");
         });
     }
 

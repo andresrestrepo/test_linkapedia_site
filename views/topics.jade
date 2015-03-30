@@ -26,5 +26,6 @@ block content
                             div.porlet-topic-title
                                 p #{child.name.toUpperCase()}
     div.load-more-topics
-        button(id="next-topics-button") Load more topics
+        img(id="next-topics-button" src="/images/down-arrow-circle-hi.png")
+        p More Topics?
         div(id="next-topics" style="display: none") #{topic.topicChildren.next}
