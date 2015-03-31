@@ -66,7 +66,7 @@ $(document).ready(function () {
             }
             tagImg.show("fast");
         }).error(function () {
-            alert("error loading image");
+            //alert("error loading image");
         });
     }
 
