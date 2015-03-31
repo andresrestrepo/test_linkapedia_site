@@ -66,7 +66,7 @@ $(document).ready(function () {
             }
             tagImg.show("fast");
         }).error(function () {
-            //alert("error loading image");
+            tagImg.attr("src", "/images/imageNotFound.png");
         });
     }
 
