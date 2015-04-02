@@ -25,6 +25,7 @@ module.exports = {
                 topicsRepository.getTopic(topicId, function(error, response, data){
                     if (!error && response.statusCode == 200) {
                         topicPageInfo.topicInfo = JSON.parse(data);
+                        topicPageInfo.topicInfo.image = "https://s3.amazonaws.com/testnodeimages/" + topicId;
                         return callback();
                     }
                     var err = new Error('Exception getting topic');
