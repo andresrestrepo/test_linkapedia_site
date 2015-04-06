@@ -21,7 +21,7 @@ $(document).ready(function () {
                 divCol.attr("onclick", "window.location.href='/topics/" + data.items[index].id +"'");
                 var divContainerTopicImage = $("<div>").addClass("container-topic-image");
                 var divImageCropped = $("<div>").addClass("topic_image image-cropper");
-                var img = $("<img>").attr("url-data", "https://s3.amazonaws.com/testnodeimages/" + data.items[index].id);
+                var img = $("<img>").attr("url-data", "https://s3.amazonaws.com/testnodeimages1/" + data.items[index].id);
                 img.css("display", "none");
                 var divTopicTitle = $("<div>").addClass("porlet-topic-title").append($("<p>").
                     text(data.items[index].name.toUpperCase()));
