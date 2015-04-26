@@ -6,6 +6,9 @@
     "start": "node ./bin/www",
     "postinstall": "cd ./public/javascripts && bower install"
   },
+  "engines": {
+    "node": "0.12.1"
+  },
   "dependencies": {
     "async": "~0.9.0",
     "body-parser": "~1.10.2",

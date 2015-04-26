@@ -18,7 +18,7 @@ block content
         div.topic-title #{topic.topicInfo.name}
         div.topic-description #{topic.topicInfo.description}
         div.topic-image
-            img(src="#{topic.topicInfo.image}" style="max-width:500px; max-height=500px"
+            img(src="#{topic.topicInfo.image}"
             onerror="$(this).attr('src', '/images/imageNotFound.png')")
     div.topics-porlet
         div.container-fluid
