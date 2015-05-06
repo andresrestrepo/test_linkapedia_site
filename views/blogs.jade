@@ -1,0 +1,11 @@
+extends layout
+block title
+    title Linkapedia Blog Page
+
+block append page_css
+    link(rel='stylesheet', href='/stylesheets/blog-landing-page.css')
+
+block content
+   div.domains-container
+      each domain in domains._embedded.domains
+         p '#{domain.name}'

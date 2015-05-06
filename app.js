@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var topics = require('./routes/topics');
+var blogs = require('./routes/blogs');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/topics', topics);
+app.use('/blogs', blogs);
 
 
 app.use(function(req, res, next) {
