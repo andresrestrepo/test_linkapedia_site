@@ -1,11 +1,15 @@
+$(window).load(function () {
+    //$("[level]").mCustomScrollbar();
+});
+
 $(document).ready(function () {
-    $('.accordion-container').on('click', '.box p', onClickNextBox);
+    $('.accordion-container').on('click', '.box span p', onClickNextBox);
     $('.accordion-container').on('click', '.box [url-more] span.glyphicon-chevron-down', onClickMore);
 });
 
 function onClickNextBox() {
     var urlNext = $(this).attr('url-next');
-    var parent = $(this).parent().parent();
+    var parent = $(this).parent().parent().parent();
     var level = parseInt(parent.attr('level'));
     parent.nextAll('.box').remove();
 
@@ -21,23 +25,24 @@ function onClickMore() {
     that.removeClass('glyphicon-chevron-down').addClass('refresh-animate');
 
     $.ajax({
-        url:that.parent().attr('url-more'),
-        dataType:'json'
-    }).done(function(res){
+        url: that.parent().attr('url-more'),
+        dataType: 'json'
+    }).done(function (res) {
         var items = getItemsFromResponse(res);
         var box = that.parent().siblings('div');
 
-        $.each(items, function(i, item){
-            box.append($('<p>').text(item.name).addClass('animated-add-item fadeInUp').attr('url-next', getHrefFromItem(item)));
+        $.each(items, function (i, item) {
+            box.append($('<span class="name"><p class="animated-add-item fadeInUp" url-next="{1}">{0}</p></span>'.format(item.name, getHrefFromItem(item))));
         });
 
-        if(res._links.next){
+        if (res._links.next) {
             that.addClass('glyphicon-chevron-down').removeClass('refresh-animate');
             that.parent().attr('url-more', res._links.next.href);
-        }else{
+        } else {
             that.remove();
         }
-    }).fail(function(err){});
+    }).fail(function (err) {
+    });
 }
 
 function getNextBox(urlNext, level) {
@@ -50,7 +55,7 @@ function getNextBox(urlNext, level) {
         var container = $('<div>').addClass('box').attr('level', ++level), box = $('<div>');
 
         $.each(json.items, function (i, item) {
-            box.append($('<p>').text(item.name).attr('url-next', item.urlnext));
+            box.append($('<span class="name"><p url-next="{1}">{0}</p></span>'.format(item.name, item.urlnext)));
         });
 
         container.append(box);
@@ -76,10 +81,10 @@ function parseJsonHalToBox(res) {
     return box;
 }
 
-function getItemsFromResponse(res){
+function getItemsFromResponse(res) {
     for (var key in res._embedded)if (/domains|taxonomies|topics/.test(key))return res._embedded[key];
 }
 
-function getHrefFromItem(item){
+function getHrefFromItem(item) {
     for (var key in item._links)if (/discussions|topics|documents/.test(key))return item._links[key].href;
 }

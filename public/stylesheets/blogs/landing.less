@@ -24,14 +24,6 @@ div[url-more] span {
   border: 1px solid #F9F9F9;
 }
 
-div[url-more] span:before {
-  //position: absolute;
-}
-
-div[url-more] span.refresh-animate:before {
-
-}
-
 div[url-more] span.glyphicon-chevron-down:before {
   position: absolute;
   top: 6px;
@@ -43,15 +35,21 @@ div[url-more] span:hover {
   cursor: pointer;
 }
 
-p[url-next] {
-  cursor: pointer;
-}
-
-p[url-next]:hover:before {
+div[level] > div > span.name:hover:before {
   font-family: 'Glyphicons Halflings';
   content: "\e072";
   position: relative;
   float: right;
+  cursor: pointer;
+}
+
+div[level] > div > span:hover {
+  cursor: pointer;
+}
+
+p[url-next] {
+  padding-right: 30px;
+  padding-left: 15px;
 }
 
 div[level] {
