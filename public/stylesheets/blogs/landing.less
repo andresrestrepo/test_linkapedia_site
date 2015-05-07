@@ -11,12 +11,40 @@
   width: 250px;
   margin-right: 10px;
   height: 100%;
+  overflow-x: overlay;
+}
+
+div[url-more] span{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid #F9F9F9;
+}
+
+div[url-more] span:before{
+  position: absolute;
+}
+
+div[url-more] span.refresh-animate:before{
+  margin-top: 6px;
+  margin-left: -8px;
+  font-size: 17px;
+}
+
+div[url-more] span.glyphicon-chevron-down:before{
+  margin-top: 7px;
+  margin-left: -8px;
+  font-size: 18px;
 }
 
 p[url-next]{
   cursor: pointer;
   font-size: 2.3em;
-
 }
 
 div[level="1"]{
@@ -33,4 +61,19 @@ div[level="3"]{
 
 div[level="4"]{
   background-color: rgb(160, 160, 160);
+}
+
+.refresh-animate {
+  -animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
 }
