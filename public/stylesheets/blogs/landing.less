@@ -16,9 +16,10 @@
 p[url-next]{
   cursor: pointer;
   width: 95%;
+  margin-left: 10px;
 }
 
-p[url-next]:hover::after{
+p[url-next]:hover:after{
   font-family: 'Glyphicons Halflings';
   content: "\e072";
   position: relative;
@@ -29,9 +30,14 @@ div[level]{
   font-family: Roboto Condensed Light;
 }
 
+
 div[level="1"]{
   background-color: rgb(210, 210, 210);
   font-size: 2.3em;
+}
+
+div[level="1"] p:hover{
+  background-color:  rgb(190,190,190);
 }
 
 div[level="2"]{
@@ -39,12 +45,24 @@ div[level="2"]{
   font-size: 2em;
 }
 
+div[level="2"] p:hover{
+  background-color:  rgb(160,160,160);
+}
+
 div[level="3"]{
   background-color: rgb(170, 170, 170);
   font-size: 1.7em;
 }
 
+div[level="3"] p:hover{
+  background-color:  rgb(140,140,140);
+}
+
 div[level="4"]{
   background-color: rgb(160, 160, 160);
   font-size: 1.4em;
+}
+
+div[level="4"] p:hover{
+  background-color:  rgb(130,130,130);
 }
