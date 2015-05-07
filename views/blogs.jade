@@ -13,4 +13,4 @@ block content
         div(level='1').box
             div
                 each domain in domains._embedded.domains
-                    p(url-next='#{domain._links.taxonomies.href}') '#{domain.name}'
+                    p(url-next='#{domain._links.taxonomies.href}') #{domain.name}
