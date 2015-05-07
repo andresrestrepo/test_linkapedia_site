@@ -6,7 +6,6 @@ function onClickNextBox() {
     var urlNext = $(this).attr('url-next');
     var parent = $(this).parent().parent();
     var level = parseInt(parent.attr('level'));
-
     parent.nextAll('.box').remove();
 
     if (level === 4) {
@@ -34,8 +33,7 @@ function getNextBox(urlNext, level) {
         });
 
         $('.accordion-container').append(container.append(box));
-    }).fail(function (err) {
-    });
+    }).fail(function (err) {});
 }
 
 function parseJsonHalToBox(res) {
