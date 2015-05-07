@@ -1,3 +1,7 @@
+$(window).load(function(){
+    //$("[level]").mCustomScrollbar();
+});
+
 $(document).ready(function () {
     $('.accordion-container').on('click', '.box p', onClickNextBox);
     $('.accordion-container').on('click', '.box [url-more] span.glyphicon-chevron-down', onClickMore);

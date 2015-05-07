@@ -13,6 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-placeholder": "~2.1.1"
+    "jquery-placeholder": "~2.1.1",
+    "malihu-custom-scrollbar-plugin": "~3.0.8"
   }
 }

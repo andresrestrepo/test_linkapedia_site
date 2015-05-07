@@ -3,10 +3,13 @@ block title
     title Linkapedia Blog Page
 
 block append page_css
+    link(rel='stylesheet', href='/javascripts/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')
     link(rel='stylesheet', href='/stylesheets/blogs/landing.css')
 
 block append page_js
+    script(src='/javascripts/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')
     script(src='/javascripts/blogs/landing.js')
+
 
 block content
     div.accordion-container
