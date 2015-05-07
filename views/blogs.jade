@@ -3,9 +3,15 @@ block title
     title Linkapedia Blog Page
 
 block append page_css
-    link(rel='stylesheet', href='/stylesheets/blog-landing-page.css')
+    link(rel='stylesheet', href='/stylesheets/blogs/landing.css')
+
+block append page_js
+    script(src='/javascripts/blogs/landing.js')
 
 block content
-   div.domains-container
-      each domain in domains._embedded.domains
-         p '#{domain.name}'
+    div.accordion-container
+        div(level='1').box
+            div
+                each domain in domains._embedded.domains
+                    p(url-next='#{domain._links.taxonomies.href}') '#{domain.name}'
+            div(url-more='#{domains._links.next.href}')
