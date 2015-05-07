@@ -18,7 +18,7 @@ function onClickNextBox() {
 
 function onClickMore() {
     var that = $(this);
-    that.removeClass('glyphicon-chevron-down').addClass('glyphicon-refresh refresh-animate');
+    that.removeClass('glyphicon-chevron-down').addClass('refresh-animate');
 
     $.ajax({
         url:that.parent().attr('url-more'),
@@ -28,11 +28,11 @@ function onClickMore() {
         var box = that.parent().siblings('div');
 
         $.each(items, function(i, item){
-            box.append($('<p>').text(item.name).attr('url-next', getHrefFromItem(item)));
+            box.append($('<p>').text(item.name).addClass('animated-add-item fadeInUp').attr('url-next', getHrefFromItem(item)));
         });
 
         if(res._links.next){
-            that.addClass('glyphicon-chevron-down').removeClass('glyphicon-refresh refresh-animate')
+            that.addClass('glyphicon-chevron-down').removeClass('refresh-animate');
             that.parent().attr('url-more', res._links.next.href);
         }else{
             that.remove();
@@ -59,7 +59,7 @@ function getNextBox(urlNext, level) {
             container.append($('<div><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>').attr('url-more', json.urlmore));
         }
 
-        $('.accordion-container').append(container);
+        $('.accordion-container').append(container.addClass('animated-box fadeInDownBig'));
     }).fail(function (err) {
     });
 }

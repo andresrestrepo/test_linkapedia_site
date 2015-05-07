@@ -1,10 +1,10 @@
-.accordion-container{
+.accordion-container {
   margin-left: 100px;
   height: 100%;
   position: absolute;
 }
 
-.box{
+.box {
   float: left;
   width: 300px;
   margin-right: 10px;
@@ -12,7 +12,7 @@
   overflow-x: overlay;
 }
 
-div[url-more] span{
+div[url-more] span {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -24,85 +24,72 @@ div[url-more] span{
   border: 1px solid #F9F9F9;
 }
 
-div[url-more] span:before{
+div[url-more] span:before {
+  //position: absolute;
+}
+
+div[url-more] span.refresh-animate:before {
+
+}
+
+div[url-more] span.glyphicon-chevron-down:before {
   position: absolute;
+  top: 6px;
+  left: 4.5px;
+  font-size: 20px;
 }
 
-div[url-more] span.refresh-animate:before{
-  margin-top: 6px;
-  margin-left: -8px;
-  font-size: 17px;
-}
-
-div[url-more] span.glyphicon-chevron-down:before{
-  margin-top: 7px;
-  margin-left: -8px;
-  font-size: 18px;
-}
-
-p[url-next]{
+div[url-more] span:hover {
   cursor: pointer;
 }
 
-p[url-next]:hover:after{
+p[url-next] {
+  cursor: pointer;
+}
+
+p[url-next]:hover:before {
   font-family: 'Glyphicons Halflings';
   content: "\e072";
   position: relative;
   float: right;
 }
 
-div[level]{
+div[level] {
   font-family: Roboto Condensed Light;
 }
 
-
-div[level="1"]{
+div[level="1"] {
   background-color: rgb(210, 210, 210);
   font-size: 2.3em;
 }
 
-div[level="1"] p:hover{
-  background-color:  rgb(190,190,190);
+div[level="1"] p:hover {
+  background-color: rgb(190, 190, 190);
 }
 
-div[level="2"]{
+div[level="2"] {
   background-color: rgb(190, 190, 190);
   font-size: 2em;
 }
 
-div[level="2"] p:hover{
-  background-color:  rgb(160,160,160);
+div[level="2"] p:hover {
+  background-color: rgb(160, 160, 160);
 }
 
-div[level="3"]{
+div[level="3"] {
   background-color: rgb(170, 170, 170);
   font-size: 1.7em;
 }
 
-div[level="3"] p:hover{
-  background-color:  rgb(140,140,140);
+div[level="3"] p:hover {
+  background-color: rgb(140, 140, 140);
 }
 
-div[level="4"]{
+div[level="4"] {
   font-size: 1.4em;
   background-color: rgb(160, 160, 160);
 }
 
-div[level="4"] p:hover{
-  background-color:  rgb(130,130,130);
-}
-
-.refresh-animate {
-  -animation: spin .7s infinite linear;
-  -webkit-animation: spin2 .7s infinite linear;
-}
-
-@-webkit-keyframes spin2 {
-  from { -webkit-transform: rotate(0deg);}
-  to { -webkit-transform: rotate(360deg);}
-}
-
-@keyframes spin {
-  from { transform: scale(1) rotate(0deg);}
-  to { transform: scale(1) rotate(360deg);}
+div[level="4"] p:hover {
+  background-color: rgb(130, 130, 130);
 }
