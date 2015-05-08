@@ -86,5 +86,5 @@ function getItemsFromResponse(res) {
 }
 
 function getHrefFromItem(item) {
-    for (var key in item._links)if (/discussions|topics|documents/.test(key))return item._links[key].href;
+    for (var key in item._links)if (/taxonomies|discussions|topics|documents/.test(key))return item._links[key].href + '?limit=2';
 }
