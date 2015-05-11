@@ -17,7 +17,7 @@ block content
             div
                 each domain in domains._embedded.domains
                     span.name
-                        p(url-next='#{domain._links.taxonomies.href}'+'?limit=2') #{domain.name}
+                        p(url-next='#{domain._links.taxonomies.href}') #{domain.name}
             if domains._links.next
                 div(url-more='#{domains._links.next.href}')
                     span(aria-hidden='true').glyphicon.glyphicon-chevron-down

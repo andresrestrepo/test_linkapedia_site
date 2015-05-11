@@ -1,5 +1,8 @@
 $(window).load(function () {
-    //$("[level]").mCustomScrollbar();
+    $("[level]").mCustomScrollbar({
+        live: "on",
+        scrollInertia:500
+    });
 });
 
 $(document).ready(function () {
@@ -9,7 +12,7 @@ $(document).ready(function () {
 
 function onClickNextBox() {
     var urlNext = $(this).attr('url-next');
-    var parent = $(this).parent().parent().parent();
+    var parent = $(this).parent().parent().parent().parent().parent();
     var level = parseInt(parent.attr('level'));
     parent.nextAll('.box').remove();
 
@@ -86,5 +89,5 @@ function getItemsFromResponse(res) {
 }
 
 function getHrefFromItem(item) {
-    for (var key in item._links)if (/taxonomies|discussions|topics|documents/.test(key))return item._links[key].href + '?limit=2';
+    for (var key in item._links)if (/taxonomies|discussions|topics|documents/.test(key))return item._links[key].href;
 }

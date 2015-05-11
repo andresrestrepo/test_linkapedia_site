@@ -1,7 +1,7 @@
 var request = require('request');
 var util = require('util');
 
-const RETRIEVE_DOMAINS_BY_BLOG = "http://linkapedia-api-release.elasticbeanstalk.com/blogs/%s/domains?limit=2";
+const RETRIEVE_DOMAINS_BY_BLOG = "http://linkapedia-api-release.elasticbeanstalk.com/blogs/%s/domains";
 
 module.exports = {
     getDomainsByBlog: function(blogId, callback){
