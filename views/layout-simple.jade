@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        link(rel="icon", type="image/x-icon", href="/images/favicon.ico")
+        block title
+            title Linkapedia
+        block page_css
+            link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+            link(rel='stylesheet', href='/stylesheets/general-page.css')
+            link(rel='stylesheet', href='/stylesheets/bar-left-side.css')
+            link(rel='stylesheet', href='/stylesheets/slide-panel.css')
+            link(rel='stylesheet', href='/stylesheets/animation.css')
+        block page_js
+            script(src='/javascripts/bower_components/jquery/dist/jquery.min.js')
+            script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+            script(src='/javascripts/bower_components/jquery-placeholder/jquery.placeholder.min.js')
+            script(src='/javascripts/utilities/string.js')
+            script(src='/javascripts/layout.js')
+    body
+        include bar_left_side-simple
+        block content
