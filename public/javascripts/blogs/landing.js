@@ -24,8 +24,8 @@ function onClickNextBox() {
     var level = parseInt(parent.attr('level'));
     parent.nextAll('.box').remove();
 
-    if (level == 1){
-        $(".accordion-container").css("left",'0px');
+    if (level == 1) {
+        $(".accordion-container").css("right", 'auto');
     }
     if (level === 4) {
         alert('go to')
