@@ -1,21 +1,21 @@
 $(window).load(function () {
     $("[level]").mCustomScrollbar({
         live: "on",
-        scrollInertia:500,
+        scrollInertia: 500,
         scrollbarPosition: "outside",
-        theme:"dark",
-        callbacks:{
-            onUpdate: function(){
-                console.log($("this"));
-                $(this).mCustomScrollbar("scrollTo",'bottom', {scrollInertia:1000});
+        theme: "dark",
+        callbacks: {
+            onUpdate: function () {
+                $(this).mCustomScrollbar("scrollTo", 'bottom', {scrollInertia: 1000});
             }
         }
     });
 });
 
 $(document).ready(function () {
-    $('.accordion-container').on('click', '.box span p', onClickNextBox);
-    $('.accordion-container').on('click', '.box [url-more] span.glyphicon-chevron-down', onClickMore);
+    $('.accordion-container')
+        .on('click', '.box span p', onClickNextBox)
+        .on('click', '.box [url-more] span.glyphicon-chevron-down', onClickMore);
 });
 
 function onClickNextBox() {
@@ -75,13 +75,15 @@ function getNextBox(urlNext, level) {
             container.append($('<div><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>').attr('url-more', json.urlmore));
         }
 
-        $('.accordion-container').append(container.addClass('animated-box fadeInDownBig'));
+        validateWidthAndHideFirstColumn(function () {
+            $('.accordion-container').append(container.addClass('animated-box fadeInDownBig'));
+        });
     }).fail(function (err) {
     });
 }
 
 function parseJsonHalToBox(res) {
-    var box = {}, href;
+    var box = {};
     box.urlmore = res._links.next ? res._links.next.href : undefined;
     box.items = getItemsFromResponse(res);
 
@@ -98,4 +100,17 @@ function getItemsFromResponse(res) {
 
 function getHrefFromItem(item) {
     for (var key in item._links)if (/taxonomies|discussions|topics|documents/.test(key))return item._links[key].href;
+}
+
+function validateWidthAndHideFirstColumn(done) {
+    var containerBoxes = $('.accordion-container');
+    var widthContainerBoxes = containerBoxes.offset().left + containerBoxes.width() + 300;
+
+    if (widthContainerBoxes > window.innerWidth) {
+        containerBoxes.find('.box:visible:first').animate({width: 'toggle'}, 300, function () {
+            done();
+        });
+    } else {
+        done();
+    }
 }
