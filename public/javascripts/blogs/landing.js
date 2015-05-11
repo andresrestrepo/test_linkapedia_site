@@ -1,7 +1,9 @@
 $(window).load(function () {
     $("[level]").mCustomScrollbar({
         live: "on",
-        scrollInertia:500
+        scrollInertia:500,
+        scrollbarPosition: "outside",
+        theme:"dark"
     });
 });
 
@@ -12,7 +14,7 @@ $(document).ready(function () {
 
 function onClickNextBox() {
     var urlNext = $(this).attr('url-next');
-    var parent = $(this).parent().parent().parent().parent().parent();
+    var parent = $(this).closest(".box");
     var level = parseInt(parent.attr('level'));
     parent.nextAll('.box').remove();
 
