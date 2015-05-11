@@ -59,6 +59,7 @@ p[url-next] {
 
 div[level] {
   font-family: Roboto Condensed Light;
+  overflow: hidden;
 }
 
 div[level="1"] {
@@ -96,3 +97,43 @@ div[level="4"] {
 div[level="4"] p:hover {
   background-color: rgb(130, 130, 130);
 }
+
+.search {
+  position: absolute;
+  margin-left: 150px;
+  margin-top: -60px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.search .title {
+  font-size: 6em;
+}
+
+.search input {
+  color: #565656;
+  font-size: 2em;
+  padding-left: 13px;
+  width: 416px;
+  margin-top: 0;
+  margin-left: 6px;
+  height: 50px;
+  font-family: 'Roboto Condensed Light';
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.exploreText {
+  float: right;
+  margin-right: 330px;
+  margin-top: 0px;
+  font-family: "Roboto Condensed Light" !important;
+  font-size: 2.5em;
+  color: #565656;
+  z-index: 999;
+}
+

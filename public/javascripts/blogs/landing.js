@@ -3,12 +3,7 @@ $(window).load(function () {
         live: "on",
         scrollInertia: 500,
         scrollbarPosition: "outside",
-        theme: "dark",
-        callbacks: {
-            onUpdate: function () {
-                $(this).mCustomScrollbar("scrollTo", 'bottom', {scrollInertia: 1000});
-            }
-        }
+        theme: "dark"
     });
 });
 
@@ -17,9 +12,11 @@ $(document).ready(function () {
         .on('click', '.box span p', onClickNextBox)
         .on('click', '.box [url-more] span.glyphicon-chevron-down', onClickMore);
 
-    $('.menu-icon').click(function(){
+    $('.menu-icon').click(function () {
         $("[level=1]").siblings().remove();
         $(".accordion-container").css("right", '0px');
+        $(".search,.exploreText,[level=1]").show();
+        $("[level=1]").mCustomScrollbar("scrollTo", 'top', {scrollInertia: 1000});
     });
 });
 
@@ -31,6 +28,7 @@ function onClickNextBox() {
 
     if (level == 1) {
         $(".accordion-container").css("right", 'auto');
+        $(".search,.exploreText").hide();
     }
     if (level === 4) {
         alert('go to')
@@ -60,6 +58,8 @@ function onClickMore() {
         } else {
             that.remove();
         }
+
+        onAppendItemInBox();
     }).fail(function (err) {
     });
 }
@@ -121,4 +121,8 @@ function validateWidthAndHideFirstColumn(done) {
     } else {
         done();
     }
+}
+
+function onAppendItemInBox() {
+    $('[level]').mCustomScrollbar("scrollTo", 'bottom', {scrollInertia: 1000});
 }
