@@ -16,6 +16,11 @@ $(document).ready(function () {
     $('.accordion-container')
         .on('click', '.box span p', onClickNextBox)
         .on('click', '.box [url-more] span.glyphicon-chevron-down', onClickMore);
+
+    $('.menu-icon').click(function(){
+        $("[level=1]").siblings().remove();
+        $(".accordion-container").css("right", '0px');
+    });
 });
 
 function onClickNextBox() {
