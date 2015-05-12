@@ -7,7 +7,7 @@
     },
     "scripts": {
         "start": "node ./bin/www",
-        "postinstall": "cd ./public/javascripts && bower install"
+        "postinstall": "cd ./public/javascripts && bower install --allow-root"
     },
     "engines": {
         "node": "0.12.1"
