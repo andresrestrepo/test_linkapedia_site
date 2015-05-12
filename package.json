@@ -2,12 +2,9 @@
     "name": "linkapedia_site",
     "version": "0.0.1",
     "private": true,
-    "config": {
-        "unsafe-perm": true
-    },
     "scripts": {
         "start": "node ./bin/www",
-        "postinstall": "cd ./public/javascripts && bower install --allow-root"
+        "postinstall": "cd ./public/javascripts && su -c 'bower install'"
     },
     "engines": {
         "node": "0.12.1"
