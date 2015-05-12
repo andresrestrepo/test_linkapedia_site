@@ -31,7 +31,7 @@ function onClickNextBox() {
         $(".search,.exploreText").hide();
     }
     if (level === 4) {
-        alert('go to')
+        window.open($(this).attr('url-next'), '_blank');
     } else {
         getNextBox(urlNext, level);
     }
@@ -74,6 +74,7 @@ function getNextBox(urlNext, level) {
         var container = $('<div>').addClass('box').attr('level', ++level), box = $('<div>');
 
         $.each(json.items, function (i, item) {
+            if(level === 4)item.urlnext = 'http://www.{0}.com/topics/{1}/{2}/{3}'.format(item.domain.id, encodeURIComponent(item.taxonomy.name), encodeURIComponent(item.name), item.id);
             box.append($('<span class="name"><p url-next="{1}">{0}</p></span>'.format(item.name, item.urlnext)));
         });
 
