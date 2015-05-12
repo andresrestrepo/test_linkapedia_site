@@ -17,7 +17,7 @@ block content
         input(search, placeholder="Find My Interest")
     h2.exploreText Explore
     div.accordion-container
-        if(!blog.errors.gettingdomains)
+        if(!blog.errors.gettingblogdomains)
             div(level='1').box
                 div
                     each domain in blog.domains._embedded.domains
@@ -27,4 +27,4 @@ block content
                     div(url-more='#{blog.domains._links.next.href}')
                         span(aria-hidden='true').glyphicon.glyphicon-chevron-down
         else
-            p.error-message #{blog.errors.gettingdomains}
+            p.error-message #{blog.errors.gettingblogdomains}
