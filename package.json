@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "cd ./public/javascripts && sudo ./node_modules/bower/bin/bower --allow-root install"
+    "postinstall": "cd ./public/javascripts && bower install > /home/ec2-user/output.txt"
   },
   "engines": {
     "node": "0.12.2"
