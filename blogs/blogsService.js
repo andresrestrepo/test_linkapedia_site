@@ -9,8 +9,8 @@ module.exports = {
 
         var tasks = [
             function (done) {
-                blogsRepository.getBlogById(blogId, function (blog) {
-                    blog.info = blog;
+                blogsRepository.getBlogById(blogId, function (_blog) {
+                    blog.info = _blog;
                     done();
                 }, function (error) {
                     fail(error);
