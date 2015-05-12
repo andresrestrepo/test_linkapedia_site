@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var app = require('../app');
+var app = require('../main');
 var debug = require('debug')('linkapedia_site:server');
 var http = require('http');
 
