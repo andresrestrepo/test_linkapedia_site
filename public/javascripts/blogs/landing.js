@@ -85,7 +85,7 @@ function getNextBox(urlNext, level) {
         }
 
         validateWidthAndHideFirstColumn(function () {
-            $('.accordion-container').append(container.addClass('animated-box fadeInDownBig'));
+            $('.accordion-container').append(container);
         });
     }).fail(function (err) {
     });
