@@ -2,8 +2,7 @@ $(window).load(function () {
     $("[level]").mCustomScrollbar({
         live: "on",
         scrollInertia: 500,
-        scrollbarPosition: "outside",
-        theme: "dark"
+        scrollbarPosition: "outside"
     });
 });
 
