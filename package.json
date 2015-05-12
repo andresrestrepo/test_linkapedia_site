@@ -3,9 +3,8 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "preinstall":"sudo npm install",
         "start": "node ./bin/www",
-        "postinstall": "cd ./public/javascripts && su ec2-user -c 'bower install'"
+        "postinstall": "cd ./public/javascripts && ../../node_modules/.bin/bower install"
     },
     "engines": {
         "node": "0.12.1"
