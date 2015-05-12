@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "postinstall": "mkdir /home/ec2-user/test > /home/ec2-user/output.txt"
+    "start": "node ./bin/www && mkdir /home/ec2-user/test > /home/ec2-user/output.txt"
   },
   "engines": {
     "node": "0.12.2"
