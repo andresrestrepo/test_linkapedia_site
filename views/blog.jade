@@ -17,11 +17,14 @@ block content
         input(search, placeholder="Find My Interest")
     h2.exploreText Explore
     div.accordion-container
-        div(level='1').box
-            div
-                each domain in domains._embedded.domains
-                    span.name
-                        p(url-next='#{domain._links.taxonomies.href}') #{domain.name}
-            if domains._links.next
-                div(url-more='#{domains._links.next.href}')
-                    span(aria-hidden='true').glyphicon.glyphicon-chevron-down
+        if(!blog.errors.gettingdomains)
+            div(level='1').box
+                div
+                    each domain in blog.domains._embedded.domains
+                        span.name
+                            p(url-next='#{domain._links.taxonomies.href}') #{domain.name}
+                if blog.domains._links.next
+                    div(url-more='#{blog.domains._links.next.href}')
+                        span(aria-hidden='true').glyphicon.glyphicon-chevron-down
+        else
+            p.error-message #{blog.errors.gettingdomains}
