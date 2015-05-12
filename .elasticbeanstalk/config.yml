@@ -8,6 +8,3 @@ global:
   default_region: us-west-1
   profile: eb-cli
   sc: git
-packages:
-  yum:
-    git: []
