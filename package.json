@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
+        "preinstall":"sudo npm install",
         "start": "node ./bin/www",
         "postinstall": "cd ./public/javascripts && su ec2-user -c 'bower install'"
     },
