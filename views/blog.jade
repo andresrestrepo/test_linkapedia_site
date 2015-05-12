@@ -13,10 +13,11 @@ block append page_js
 
 block content
     div.search
-        img(src='https://s3.amazonaws.com/blogimagelink/#{blog.info.id}/medium.png').blog-image
         h1.title #{blog.info.title}
         h1.title Topic map by Linkapedia
         input(search, placeholder="Find My Interest")
+        br
+        img(src='https://s3.amazonaws.com/blogimagelink/#{blog.info.id}/medium.png').blog-image
     h2.exploreText Explore
     div.accordion-container
         if(!blog.errors.gettingblogdomains)
