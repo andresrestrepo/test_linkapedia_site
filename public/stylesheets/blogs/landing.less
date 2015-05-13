@@ -1,5 +1,5 @@
-.mCSB_outside + .mCSB_scrollTools {
-  right: -5px;
+.mCSB_inside > .mCSB_container {
+  margin-right: 5px !important;
 }
 
 .accordion-container {
@@ -12,7 +12,6 @@
 .box {
   float: left;
   width: 300px;
-  margin-right: 10px;
   height: 100%;
 }
 
@@ -73,6 +72,10 @@ div[level="1"] p:hover {
   background-color: rgb(190, 190, 190);
 }
 
+.hover-level1 {
+  background-color: rgb(190, 190, 190);
+}
+
 div[level="2"] {
   background-color: rgb(190, 190, 190);
   font-size: 2em;
@@ -82,9 +85,17 @@ div[level="2"] p:hover {
   background-color: rgb(160, 160, 160);
 }
 
+.hover-level2 {
+  background-color: rgb(160, 160, 160);
+}
+
 div[level="3"] {
   background-color: rgb(170, 170, 170);
   font-size: 1.7em;
+}
+
+.hover-level3 {
+  background-color: rgb(140, 140, 140);
 }
 
 div[level="3"] p:hover {
@@ -97,6 +108,10 @@ div[level="4"] {
 }
 
 div[level="4"] p:hover {
+  background-color: rgb(130, 130, 130);
+}
+
+.hover-level4 {
   background-color: rgb(130, 130, 130);
 }
 

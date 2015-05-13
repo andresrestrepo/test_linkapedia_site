@@ -3,8 +3,7 @@ $(window).load(function () {
 
     $("[level]").mCustomScrollbar({
         live: "on",
-        scrollInertia: 500,
-        scrollbarPosition: "outside"
+        scrollInertia: 500
     });
 
     scrollTopDomains();
@@ -29,6 +28,9 @@ function onClickNextBox() {
     var level = parseInt(parent.attr('level'));
     parent.nextAll('.box').remove();
 
+    $(this).removeClass('hover-level1 hover-level2 hover-level3 hover-level4').addClass('hover-level' + level);
+    scrollCenterItem(this);
+
     if (level == 1) {
         $(".accordion-container").css("right", 'auto');
         $(".search,.exploreText").hide();
@@ -38,8 +40,6 @@ function onClickNextBox() {
     } else {
         getNextBox(urlNext, level);
     }
-
-    scrollCenterItem(this);
 }
 
 function onClickMore() {
@@ -83,15 +83,15 @@ function getNextBox(urlNext, level) {
             box.append($('<span class="name"><p url-next="{1}">{0}</p></span>'.format(item.name, item.urlnext)));
         });
 
+        addExtraSpaceToBox(box);
         container.append(box);
 
         if (json.urlmore) {
             container.append($('<div><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>').attr('url-more', json.urlmore));
         }
 
-        validateWidthAndHideFirstColumn(function () {
-            $('.accordion-container').append(container);
-        });
+        validateWidthAndHideFirstColumn();
+        $('.accordion-container').append(container);
     }).fail(function (err) {
     });
 }
@@ -116,16 +116,12 @@ function getHrefFromItem(item) {
     for (var key in item._links)if (/taxonomies|discussions|topics|documents/.test(key))return item._links[key].href;
 }
 
-function validateWidthAndHideFirstColumn(done) {
+function validateWidthAndHideFirstColumn() {
     var containerBoxes = $('.accordion-container');
     var widthContainerBoxes = containerBoxes.offset().left + containerBoxes.width() + 300;
 
     if (widthContainerBoxes > window.innerWidth) {
-        containerBoxes.find('.box:visible:first').animate({width: 'toggle'}, 300, function () {
-            done();
-        });
-    } else {
-        done();
+        containerBoxes.find('.box:visible:first').hide();
     }
 }
 
@@ -144,6 +140,7 @@ function scrollTopDomains() {
 }
 
 function scrollCenterItem(itemSelected) {
-    var centerPosition = ($(itemSelected).closest('.items').height() / 2) - $(itemSelected).parent().offset().top;
-    console.log(centerPosition);
+    var centerPosition = ($(itemSelected).parent().position().top - ($(document).height() / 2)) + 30;
+
+    $(itemSelected).closest('[level]').mCustomScrollbar("scrollTo", centerPosition, {scrollInertia: 1000});
 }
