@@ -1,9 +1,13 @@
 $(window).load(function () {
+    addExtraSpaceToBox($('.items:first'));
+
     $("[level]").mCustomScrollbar({
         live: "on",
         scrollInertia: 500,
         scrollbarPosition: "outside"
     });
+
+    scrollTopDomains();
 });
 
 $(document).ready(function () {
@@ -15,7 +19,7 @@ $(document).ready(function () {
         $("[level=1]").siblings().remove();
         $(".accordion-container").css("right", '0px');
         $(".search,.exploreText,[level=1]").show();
-        $("[level=1]").mCustomScrollbar("scrollTo", 'top', {scrollInertia: 1000});
+        scrollTopDomains();
     });
 });
 
@@ -34,6 +38,8 @@ function onClickNextBox() {
     } else {
         getNextBox(urlNext, level);
     }
+
+    scrollCenterItem(this);
 }
 
 function onClickMore() {
@@ -70,10 +76,10 @@ function getNextBox(urlNext, level) {
         async: false
     }).done(function (res) {
         var json = parseJsonHalToBox(res);
-        var container = $('<div>').addClass('box').attr('level', ++level), box = $('<div>');
+        var container = $('<div>').addClass('box').attr('level', ++level), box = $('<div class="items">');
 
         $.each(json.items, function (i, item) {
-            if(level === 4)item.urlnext = 'http://www.{0}.com/topics/{1}/{2}/{3}'.format(item.domain.id, encodeURIComponent(item.taxonomy.name), encodeURIComponent(item.name), item.id);
+            if (level === 4)item.urlnext = 'http://www.{0}.com/topics/{1}/{2}/{3}'.format(item.domain.id, encodeURIComponent(item.taxonomy.name), encodeURIComponent(item.name), item.id);
             box.append($('<span class="name"><p url-next="{1}">{0}</p></span>'.format(item.name, item.urlnext)));
         });
 
@@ -125,4 +131,19 @@ function validateWidthAndHideFirstColumn(done) {
 
 function onAppendItemInBox() {
     $('[level]').mCustomScrollbar("scrollTo", 'bottom', {scrollInertia: 1000});
+}
+
+function addExtraSpaceToBox(box) {
+    var extraSpace = $(document).height() / 2;
+    $(box).css('padding-top', extraSpace + 'px').css('padding-bottom', extraSpace + 'px');
+}
+
+function scrollTopDomains() {
+    var topPosition = $(document).height() / 2;
+    $('[level]').mCustomScrollbar("scrollTo", topPosition, {scrollInertia: 1000});
+}
+
+function scrollCenterItem(itemSelected) {
+    var centerPosition = ($(itemSelected).closest('.items').height() / 2) - $(itemSelected).parent().offset().top;
+    console.log(centerPosition);
 }
