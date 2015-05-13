@@ -1,4 +1,5 @@
 $(window).load(function () {
+    setFocusSearch();
     addExtraSpaceToBox($('.items:first'));
 
     $("[level]").mCustomScrollbar({
@@ -18,6 +19,7 @@ $(document).ready(function () {
         $("[level=1]").siblings().remove();
         $(".accordion-container").css("right", '0px');
         $(".search,.exploreText,[level=1]").show();
+        setFocusSearch();
         scrollTopDomains();
     });
 });
@@ -145,4 +147,8 @@ function scrollCenterItem(itemSelected, level) {
     var centerPosition = ($(itemSelected).parent().position().top - ($(document).height() / 2)) + 30;
     var time = level === 4 ? 0 : 1000;
     $(itemSelected).closest('[level]').mCustomScrollbar("scrollTo", centerPosition, {scrollInertia: time});
+}
+
+function setFocusSearch() {
+    $('[search]').focus();
 }
