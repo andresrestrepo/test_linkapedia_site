@@ -30,7 +30,6 @@ function onClickNextBox() {
 
     $(this).closest('.items').find('p').removeClass('hover-level1 hover-level2 hover-level3 hover-level4');
     $(this).addClass('hover-level' + level);
-    scrollCenterItem(this);
 
     if (level == 1) {
         $(".accordion-container").css("right", 'auto');
@@ -41,6 +40,8 @@ function onClickNextBox() {
     } else {
         getNextBox(urlNext, level);
     }
+
+    scrollCenterItem(this, level);
 }
 
 function onClickMore() {
@@ -58,14 +59,14 @@ function onClickMore() {
             box.append($('<span class="name"><p class="animated-add-item fadeInUp" url-next="{1}">{0}</p></span>'.format(item.name, getHrefFromItem(item))));
         });
 
+        onAppendItemInBox(that);
+
         if (res._links.next) {
             that.addClass('glyphicon-chevron-down').removeClass('refresh-animate');
             that.parent().attr('url-more', res._links.next.href);
         } else {
             that.remove();
         }
-
-        onAppendItemInBox();
     }).fail(function (err) {
     });
 }
@@ -126,8 +127,8 @@ function validateWidthAndHideFirstColumn() {
     }
 }
 
-function onAppendItemInBox() {
-    $('[level]').mCustomScrollbar("scrollTo", 'bottom', {scrollInertia: 1000});
+function onAppendItemInBox(buttonMore) {
+    $(buttonMore).closest('[level]').mCustomScrollbar("scrollTo", 'bottom', {scrollInertia: 1000});
 }
 
 function addExtraSpaceToBox(box) {
@@ -140,8 +141,8 @@ function scrollTopDomains() {
     $('[level]').mCustomScrollbar("scrollTo", topPosition, {scrollInertia: 1000});
 }
 
-function scrollCenterItem(itemSelected) {
+function scrollCenterItem(itemSelected, level) {
     var centerPosition = ($(itemSelected).parent().position().top - ($(document).height() / 2)) + 30;
-
-    $(itemSelected).closest('[level]').mCustomScrollbar("scrollTo", centerPosition, {scrollInertia: 1000});
+    var time = level === 4 ? 0 : 1000;
+    $(itemSelected).closest('[level]').mCustomScrollbar("scrollTo", centerPosition, {scrollInertia: time});
 }
