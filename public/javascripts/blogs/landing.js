@@ -18,7 +18,7 @@ $(document).ready(function () {
     $('.menu-icon').click(function () {
         $("[level=1]").siblings().remove();
         $(".accordion-container").css("right", '0px');
-        $(".search,.exploreText,[level=1]").show();
+        $(".search,.exploreText,[level=1], .footer").show();
         setFocusSearch();
         scrollTopDomains();
     });
@@ -35,7 +35,7 @@ function onClickNextBox() {
 
     if (level == 1) {
         $(".accordion-container").css("right", 'auto');
-        $(".search,.exploreText").hide();
+        $(".search,.exploreText,.footer").hide();
     }
     if (level === 4) {
         window.open($(this).attr('url-next'), '_blank');
