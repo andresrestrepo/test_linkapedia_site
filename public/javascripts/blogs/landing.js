@@ -28,7 +28,8 @@ function onClickNextBox() {
     var level = parseInt(parent.attr('level'));
     parent.nextAll('.box').remove();
 
-    $(this).removeClass('hover-level1 hover-level2 hover-level3 hover-level4').addClass('hover-level' + level);
+    $(this).closest('.items').find('p').removeClass('hover-level1 hover-level2 hover-level3 hover-level4');
+    $(this).addClass('hover-level' + level);
     scrollCenterItem(this);
 
     if (level == 1) {
